@@ -1,0 +1,24 @@
+table, .actionBar { 
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px
+}
+
+.actionBar button {
+    margin-right: 20px;
+}
+
+.actionBar .refreshButton {
+    margin-right: 0px;
+}
+
+
+
+.selectable:hover {
+    background: rgb(220, 220, 221);
+}
+  
+.selectable:active {
+    background: #efefef;
+}

@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>User Details</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userDetailsForm" autocomplete="off" (ngSubmit)="saveUser()" fxLayout="column"
+        layoutGap="10px">
+
+        <mat-form-field fxFlex>
+            <input matInput formControlName="firstName" required placeholder="Name">
+            <mat-error *ngIf="isInvalid('firstName')">{{getErrorMessage('firstName')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput formControlName="lastName" required placeholder="Surname">
+            <mat-error *ngIf="isInvalid('lastName')">{{getErrorMessage('lastName')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput formControlName="email" placeholder="Email" required>
+            <mat-error *ngIf="isInvalid('email')">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"
+                placeholder="Date Of Birth" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="isInvalid('dateOfBirth')">{{getErrorMessage('dateOfBirth')}}</mat-error>
+        </mat-form-field>
+    </form>
+    <mat-error *ngIf="error">{{error}}</mat-error>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Close</button>
+    <button mat-raised-button type="submit" (click)="saveUser()" cdkFocusInitial [disabled]="!userDetailsForm.valid" color="primary">Save</button>
+</div>
